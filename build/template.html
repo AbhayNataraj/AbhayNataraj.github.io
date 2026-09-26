@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ p.name }} | Data & Analytics Portfolio</title>
+<meta name="description" content="{{ p.name }}: {{ p.tagline }}">
+<meta property="og:title" content="{{ p.name }} | Data & Analytics Portfolio">
+<meta property="og:description" content="{{ p.tagline }}">
+<meta property="og:type" content="website">
+{% if featured and featured[0].image %}<meta property="og:image" content="{{ featured[0].image if featured[0].image.startswith('http') else 'https://' ~ p.github_user|lower ~ '.github.io/' ~ featured[0].image }}">{% endif %}
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top">{{ p.name }}</a>
+    <nav>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero wrap">
+    <p class="eyebrow">{{ p.headline }}</p>
+    <h1>Hi, I'm {{ p.name.split(' ')[0] }}.</h1>
+    <p class="lede">{{ p.tagline }}</p>
+    <div class="cta">
+      <a class="btn primary" href="#projects">See my projects</a>
+      {% if has_resume %}<a class="btn" href="{{ p.resume }}" target="_blank" rel="noopener">Download resume</a>{% endif %}
+      <a class="btn ghost" href="{{ p.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn ghost" href="{{ p.github }}" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </section>
+
+  <section id="projects" class="wrap section">
+    <div class="section-head">
+      <h2>Projects</h2>
+      <p class="muted">Each one starts with a business question and ends with what I'd actually do about it.</p>
+    </div>
+
+    {% for pr in featured %}
+    <article class="card feature">
+      {% if pr.image %}
+      <div class="shot {{ 'contain' if pr.image_fit == 'contain' }}">
+        <img src="{{ pr.image }}" alt="{{ pr.title }} screenshot" loading="{{ 'eager' if loop.first else 'lazy' }}"
+             onerror="this.parentElement.remove()">
+      </div>
+      {% endif %}
+      <div class="feature-body">
+        <div class="feature-top">
+          <div>
+            <h3>{{ pr.title }}</h3>
+            {% if pr.subtitle %}<p class="subtitle">{{ pr.subtitle }}</p>{% endif %}
+          </div>
+          <div class="links">
+            {% for l in pr.links %}<a class="btn small {{ 'primary' if loop.first }}" href="{{ l.url }}" target="_blank" rel="noopener">{{ l.label }} ↗</a>{% endfor %}
+            {% if pr.code_url %}<a class="btn small" href="{{ pr.code_url }}" target="_blank" rel="noopener">Code ↗</a>{% endif %}
+          </div>
+        </div>
+
+        <div class="feature-grid">
+          <div>
+            <p>{{ pr.summary }}</p>
+            {% if pr.highlights %}
+            {% if pr.highlights_title %}<p class="hl-title">{{ pr.highlights_title }}</p>{% endif %}
+            <ul class="highlights">
+              {% for h in pr.highlights %}<li>{{ h }}</li>{% endfor %}
+            </ul>
+            {% endif %}
+          </div>
+          {% if pr.metrics %}
+          <dl class="metrics">
+            {% for m in pr.metrics %}
+            <div class="metric"><dt>{{ m.value }}</dt><dd>{{ m.label }}</dd></div>
+            {% endfor %}
+          </dl>
+          {% endif %}
+        </div>
+
+        {% if pr.tags %}<ul class="tags">{% for t in pr.tags %}<li>{{ t }}</li>{% endfor %}</ul>{% endif %}
+      </div>
+    </article>
+    {% endfor %}
+
+    {% if more %}
+    <h3 class="more-head">More projects</h3>
+    <div class="grid">
+      {% for pr in more %}
+      <article class="card mini">
+        {% if pr.image %}<div class="shot small"><img src="{{ pr.image }}" alt="" loading="lazy" onerror="this.parentElement.remove()"></div>{% endif %}
+        <div class="mini-body">
+          <h4>{{ pr.title }}</h4>
+          {% if pr.summary %}<p>{{ pr.summary }}</p>{% endif %}
+          {% if pr.tags %}<ul class="tags">{% for t in pr.tags %}<li>{{ t }}</li>{% endfor %}</ul>{% endif %}
+          <div class="links">
+            {% for l in pr.links %}<a href="{{ l.url }}" target="_blank" rel="noopener">{{ l.label }} ↗</a>{% endfor %}
+            {% if pr.code_url %}<a href="{{ pr.code_url }}" target="_blank" rel="noopener">Code ↗</a>{% endif %}
+            {% if pr.updated %}<span class="muted">Updated {{ pr.updated|month }}</span>{% endif %}
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </section>
+
+  <section id="experience" class="wrap section">
+    <div class="section-head"><h2>Experience</h2></div>
+    <div class="jobs">
+      {% for e in p.experience %}
+      <article class="job">
+        <div class="job-head">
+          <h3>{{ e.role }} <span class="muted">· {{ e.company }}</span></h3>
+          {% if e.dates %}<span class="dates">{{ e.dates }}</span>{% endif %}
+        </div>
+        {% if e.points %}<ul class="highlights">{% for pt in e.points %}<li>{{ pt }}</li>{% endfor %}</ul>{% endif %}
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section id="about" class="wrap section">
+    <div class="section-head"><h2>About</h2></div>
+    <div class="about">
+      <div class="about-text">
+        {% for para in p.about %}<p>{{ para }}</p>{% endfor %}
+      </div>
+      <aside class="card timeline">
+        <h4>Education</h4>
+        <ol>
+          {% for e in p.education %}
+          <li><strong>{{ e.title }}</strong><span>{{ e.place }}{% if e.dates %} · {{ e.dates }}{% endif %}</span></li>
+          {% endfor %}
+        </ol>
+        <p class="muted small">Based in {{ p.location }}</p>
+      </aside>
+    </div>
+  </section>
+
+  <section id="skills" class="wrap section">
+    <div class="section-head"><h2>Skills</h2></div>
+    <div class="skills">
+      {% for g in p.skills %}
+      <div class="skill-group">
+        <h4>{{ g.group }}</h4>
+        <ul class="tags">{% for s in g['items'] %}<li>{{ s }}</li>{% endfor %}</ul>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section id="contact" class="wrap section contact">
+    <h2>Let's talk</h2>
+    <p class="lede">I'm happy to walk through any of these projects or talk about analytics roles.</p>
+    <div class="cta">
+      {% if p.email %}<a class="btn primary" href="mailto:{{ p.email }}">{{ p.email }}</a>{% endif %}
+      <a class="btn" href="{{ p.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="{{ p.github }}" target="_blank" rel="noopener">GitHub</a>
+      {% if p.tableau %}<a class="btn" href="{{ p.tableau }}" target="_blank" rel="noopener">Tableau Public</a>{% endif %}
+      {% if has_resume %}<a class="btn" href="{{ p.resume }}" target="_blank" rel="noopener">Resume</a>{% endif %}
+    </div>
+  </section>
+</main>
+
+<footer class="wrap footer">
+  <span>© {{ year }} {{ p.name }}</span>
+  <span class="muted">Projects sync from my GitHub. Last updated {{ built }}.</span>
+</footer>
+
+</body>
+</html>

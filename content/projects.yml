@@ -1,0 +1,106 @@
+# HOW PROJECTS GET ON THE SITE
+#
+# 1. Automatic: add the topic "portfolio" to any GitHub repo (repo page > About > gear icon > Topics).
+#    The site checks GitHub every morning and adds it under "More projects", using the repo's
+#    description, website link, topics and the first image in its README.
+#
+# 2. Hand-written: add an entry below to give a project a fuller card (numbers, highlights,
+#    your own image). Entries here always show, whether or not the repo is tagged.
+#    featured: true puts it in the big "Featured" section, in the order listed here.
+#
+# Any field can be left out. To hide a tagged repo, add an entry with its repo and hidden: true.
+
+- repo: upi-pulse
+  featured: true
+  title: UPI Pulse
+  subtitle: An automated pipeline and live dashboard for India's monthly UPI numbers
+  image: assets/img/upi-pulse.png
+  summary: >-
+    NPCI publishes UPI statistics every month as a messy Excel file. I built a pipeline that
+    cleans it, checks it, loads it into DuckDB, works out the growth metrics in SQL, refreshes
+    a public dashboard and emails a short summary, but only when a new month has actually landed.
+  metrics:
+    - value: 24.51B
+      label: UPI transactions in Aug 2026
+    - value: 35% → 22%
+      label: yearly transaction growth, mid-2025 to mid-2026
+    - value: "−18%"
+      label: fall in average payment size since Apr 2024
+  highlights:
+    - Payments are getting smaller while volume keeps climbing, which points to UPI being used more for small everyday purchases.
+    - The run stops before bad numbers get published. One check catches missing months, because a single gap would silently shift every year-on-year comparison after it.
+    - Runs in the cloud on GitHub Actions and locally as an Airflow DAG, with each script mapping to one task.
+  tags: [Python, SQL, DuckDB, Airflow, GitHub Actions, Streamlit]
+  links:
+    - label: Live dashboard
+      url: https://upi-pulse-abhay.streamlit.app/
+
+- repo: loan-repayment-analysis
+  featured: true
+  title: Loan Portfolio Health
+  subtitle: Repayment drivers and recovery priorities for UCUCI Bank
+  image: https://public.tableau.com/static/images/NL/NL_UCUCI_17827220111940/PortfolioHealth/1.png
+  summary: >-
+    Which borrowers repay better, and where should the bank put its recovery effort? I split
+    closed loans, to learn what drives repayment, from active loans, to find where the risk is
+    today, with Loan Repayment Rate as the core metric.
+  metrics:
+    - value: 887K
+      label: loans analysed
+    - value: ₹167.3M
+      label: at-risk principal in grades C, D and E
+    - value: "70.9%"
+      label: of active delinquent exposure in those grades
+  highlights:
+    - Repayment weakens steadily with lower grades, higher interest rates, higher debt-to-income and 60-month terms.
+    - Recovery should start with delinquent loans in grades C to E, where the bank has both the risk and the money at stake.
+    - Actions matched to how late a borrower is, from reminders in the grace period to restructuring past 30 days.
+  tags: [Python, pandas, Tableau]
+  links:
+    - label: Tableau dashboard
+      url: https://public.tableau.com/app/profile/abhay.nataraj/viz/NL_UCUCI_17827220111940/PortfolioHealth
+
+- repo: payflow-payment-failure-prediction
+  featured: true
+  title: PayFlow
+  subtitle: Payment failure prediction and a smart-retry A/B test
+  image: assets/img/payflow.png
+  image_fit: contain
+  summary: >-
+    200,000 payment-gateway transactions and two questions: did a new retry-routing policy
+    actually cut failures, and can we tell which payment will fail next? The data is generated,
+    with leakage, sensor glitches and class imbalance built in on purpose to make the cleaning real.
+  metrics:
+    - value: "−6.2%"
+      label: payment failures in the A/B test (p < 0.001)
+    - value: ₹1.88M
+      label: estimated yearly value at full rollout
+    - value: "20%"
+      label: lower expected cost from choosing the cutoff by cost, not 0.5
+  highlights:
+    - The latency guardrail passed on effect size, not p-value. With 190,000 rows a test flags differences nobody would ever notice.
+    - The win is concentrated in UPI. Debit cards looked significant alone but didn't survive a Bonferroni correction, so I wrote that up as the next test rather than a finding.
+    - Three engineered features closed 97% of the gap between logistic regression and XGBoost. I'd ship the simpler model for speed and explainability.
+  tags: [Python, scikit-learn, XGBoost, A/B testing, Statistics]
+  links:
+    - label: Read the notebook
+      url: https://github.com/AbhayNataraj/payflow-payment-failure-prediction/blob/main/payment_failure_prediction.ipynb
+
+- title: NimbusPM
+  featured: true
+  subtitle: Product analytics for a B2B project-management SaaS
+  image: https://public.tableau.com/static/images/Ni/NimbusSaaSAnalysis/1_Growth/1.png
+  summary: >-
+    A four-tab Tableau dashboard for a fictional subscription SaaS company. It follows the
+    questions a product or revenue team asks every month: are we growing, who's leaving,
+    are new users actually getting value, and which accounts need attention right now.
+  highlights_title: The four tabs
+  highlights:
+    - Growth and Revenue
+    - Retention and Churn
+    - Activation and Engagement
+    - Account Health and Actions
+  tags: [Tableau, SaaS metrics, Product analytics]
+  links:
+    - label: Tableau dashboard
+      url: https://public.tableau.com/app/profile/abhay.nataraj/viz/NimbusSaaSAnalysis/1_Growth

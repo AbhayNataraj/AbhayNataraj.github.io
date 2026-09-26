@@ -1,0 +1,66 @@
+# Everything about you on the site lives in this file.
+# Edit any line, commit, and the site rebuilds in about a minute.
+
+name: Abhay Nataraj
+headline: Data Analyst | SQL, Python & Tableau
+tagline: >-
+  2+ years at Razorpay working with payments and reconciliation data. I use SQL, Python and
+  Tableau to work out what actually happened, what it cost, and what to do next.
+location: Bengaluru, India
+
+github_user: AbhayNataraj
+email: abhay.cnr@gmail.com
+linkedin: https://www.linkedin.com/in/abhay-nataraj-4b88891a1
+github: https://github.com/AbhayNataraj
+tableau: https://public.tableau.com/app/profile/abhay.nataraj
+# The resume file in assets/. To update it, replace that file with your new PDF (same name).
+resume: assets/Abhay_Nataraj_Resume.pdf
+
+about:
+  - >-
+    I've spent the last 2+ years at Razorpay, first as an Associate Technical Consultant and now
+    as a Technical Consultant. A lot of that time goes into payments and reconciliation data:
+    working out what failed, how much money it touched, and why.
+  - >-
+    The part I enjoy most is when the obvious explanation turns out to be wrong and the data
+    points somewhere else. That's why I'm moving into analytics full time.
+  - >-
+    Outside work I build projects in payments and lending, where I already know how the business
+    works. I care about getting the numbers right first, then saying plainly what they mean and
+    what someone should do about them.
+
+experience:
+  - role: Technical Consultant
+    company: Razorpay
+    dates: Oct 2025 – Present
+    points:
+      - Quantified 91,115 failed payouts worth about ₹70L across 46 merchants during a critical payout outage, which drove the P0 declaration and the rollback decision.
+      - Built automated SQL reconciliation reports over ~300K monthly transactions across 18 accounts, saving ~20 hours of manual work a month and cutting payout SLA from 40 to 15 minutes.
+      - Recovered 39% of dormant virtual accounts (27 of 70) and flagged 33 low-balance merchants by cleaning balance data and running a cohort analysis in pandas.
+  - role: Associate Technical Consultant
+    company: Razorpay
+    dates: Mar 2024 – Sep 2025
+    points:
+      - Restored auto-refresh and live balances for 4,000+ merchant users by tracing a balance-fetch degradation through service logs and failure patterns.
+      - Pinned down the actual exposure of ₹35,498 in a disputed case by reconciling payout records against dashboard transactions in SQL, so it could be settled precisely.
+      - Recovered ~₹5L in transaction fees that had gone uncharged by finding a fee-debit gap and fixing the reporting logic so it gets caught in future.
+
+education:
+  - title: B.E. in Computer Science and Engineering
+    place: BNM Institute of Technology, Bengaluru
+    dates: 2019 – 2023
+  - title: Data Analyst Fellowship, Top Fellow
+    place: NextLeap
+    dates: "2026"
+
+skills:
+  - group: Analysis
+    items: ["SQL (CTEs, window functions)", Python, pandas, NumPy, Jupyter]
+  - group: Visualisation
+    items: [Tableau, Streamlit, Matplotlib, Seaborn]
+  - group: Statistics & ML
+    items: [A/B testing, Hypothesis tests, Power analysis, scikit-learn, XGBoost]
+  - group: Data pipelines
+    items: [DuckDB, Apache Airflow, GitHub Actions]
+  - group: Domain
+    items: [Payments & UPI, Payouts & reconciliation, Lending & credit risk]
