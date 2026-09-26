@@ -56,8 +56,14 @@
     - Recovery should start with delinquent loans in grades C to E, where the bank has both the risk and the money at stake.
     - Actions matched to how late a borrower is, from reminders in the grace period to restructuring past 30 days.
   tags: [Python, pandas, Tableau]
-  links:
+  parts:
+    - label: Python analysis
+      desc: Cleaning, EDA and cohort analysis on 887K loans, with the findings and recommendations written up in a Jupyter notebook.
+      cta: Open the notebook
+      url: https://github.com/AbhayNataraj/loan-repayment-analysis/blob/main/UCUCI_Loan_Repayment_Analysis_Redesigned.ipynb
     - label: Tableau dashboard
+      desc: "Four tabs: Portfolio Health, Closed Loan Repayment Drivers, Active Loan Risk & Recovery Prioritization, and Final Recommendations."
+      cta: Open on Tableau Public
       url: https://public.tableau.com/app/profile/abhay.nataraj/viz/NL_UCUCI_17827220111940/PortfolioHealth
 
 - repo: payflow-payment-failure-prediction

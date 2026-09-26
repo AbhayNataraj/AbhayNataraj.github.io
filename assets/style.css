@@ -162,3 +162,11 @@ a { color: inherit; }
 .shot.contain { background: #ffffff; }
 .shot.contain img { object-fit: contain; object-position: center; }
 @media (max-width: 760px) { .shot.contain img { height: auto; max-height: 200px; } }
+
+/* project parts (e.g. notebook + dashboard) */
+.parts { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-top: 22px; }
+.part { display: flex; flex-direction: column; gap: 6px; padding: 16px 18px; border: 1px solid var(--line); border-radius: 12px; text-decoration: none; background: var(--surface); transition: border-color .15s; }
+.part:hover { border-color: var(--accent); }
+.part-label { font-family: "Inter Tight", sans-serif; font-weight: 700; font-size: 16px; }
+.part-desc { color: var(--muted); font-size: 14px; line-height: 1.5; }
+.part-cta { color: var(--accent); font-weight: 500; font-size: 14px; margin-top: auto; padding-top: 4px; }

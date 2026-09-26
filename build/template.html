@@ -88,6 +88,17 @@
           {% endif %}
         </div>
 
+        {% if pr.parts %}
+        <div class="parts">
+          {% for part in pr.parts %}
+          <a class="part" href="{{ part.url }}" target="_blank" rel="noopener">
+            <span class="part-label">{{ part.label }}</span>
+            <span class="part-desc">{{ part.desc }}</span>
+            <span class="part-cta">{{ part.cta or 'Open' }} ↗</span>
+          </a>
+          {% endfor %}
+        </div>
+        {% endif %}
         {% if pr.tags %}<ul class="tags">{% for t in pr.tags %}<li>{{ t }}</li>{% endfor %}</ul>{% endif %}
       </div>
     </article>
