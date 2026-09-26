@@ -49,6 +49,15 @@ education:
   - title: B.E. in Computer Science and Engineering
     place: BNM Institute of Technology, Bengaluru
     dates: 2019 – 2023
+    score: CGPA 7.9
+  - title: Class 12 (2nd PUC)
+    place: Chaitanya PU College, Bengaluru
+    dates: Jun 2019
+    score: 71%
+  - title: Class 10 (ICSE)
+    place: Carmel High School, Bengaluru
+    dates: May 2017
+    score: 85%
 
 certifications:
   - title: Data Analyst Fellowship

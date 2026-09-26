@@ -173,7 +173,7 @@
         <h4>Education</h4>
         <ol>
           {% for e in p.education %}
-          <li><strong>{{ e.title }}</strong><span>{{ e.place }}{% if e.dates %} · {{ e.dates }}{% endif %}</span></li>
+          <li><strong>{{ e.title }}</strong><span>{{ e.place }}{% if e.dates %} · {{ e.dates }}{% endif %}</span>{% if e.score %}<span class="score">{{ e.score }}</span>{% endif %}</li>
           {% endfor %}
         </ol>
         <p class="muted small">Based in {{ p.location }}</p>
