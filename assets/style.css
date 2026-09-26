@@ -170,3 +170,14 @@ a { color: inherit; }
 .part-label { font-family: "Inter Tight", sans-serif; font-weight: 700; font-size: 16px; }
 .part-desc { color: var(--muted); font-size: 14px; line-height: 1.5; }
 .part-cta { color: var(--accent); font-weight: 500; font-size: 14px; margin-top: auto; padding-top: 4px; }
+
+/* certifications */
+.cert { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 28px; padding: 26px 28px; align-items: center; }
+.cert h3 { font-size: 22px; margin: 10px 0 4px; }
+.award { display: inline-block; font-size: 13px; font-weight: 600; padding: 4px 12px; border-radius: 999px; background: #fde68a; color: #3b2f00; }
+.cert-images { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.cert-images img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 10px; border: 1px solid var(--line); transition: transform .15s; }
+.cert-images a:hover img { transform: translateY(-2px); }
+@media (max-width: 760px) {
+  .cert { grid-template-columns: 1fr; padding: 20px 18px; gap: 18px; }
+}

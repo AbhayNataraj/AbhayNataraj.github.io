@@ -49,9 +49,27 @@ education:
   - title: B.E. in Computer Science and Engineering
     place: BNM Institute of Technology, Bengaluru
     dates: 2019 – 2023
-  - title: Data Analyst Fellowship, Top Fellow
-    place: NextLeap
-    dates: "2026"
+
+certifications:
+  - title: Data Analyst Fellowship
+    issuer: NextLeap
+    date: Jul 2026
+    award: Top Fellow
+    desc: >-
+      Completed the fellowship in July 2026 and was named a Top Fellow. The Loan Portfolio
+      Health project above is built on a dataset from the programme.
+    images:
+      - src: assets/certs/nextleap-top-fellow-badge-small.jpg
+        href: assets/certs/nextleap-top-fellow-badge.jpg
+        alt: NextLeap Top Fellow badge for Abhay Nataraj
+      - src: assets/certs/nextleap-certificate-preview.jpg
+        href: assets/certs/nextleap-data-analyst-fellowship-certificate.pdf
+        alt: NextLeap Data Analyst Fellowship certificate of completion
+    links:
+      - label: View certificate
+        url: assets/certs/nextleap-data-analyst-fellowship-certificate.pdf
+      - label: View Top Fellow badge
+        url: assets/certs/nextleap-top-fellow-badge.jpg
 
 skills:
   - group: Analysis

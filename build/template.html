@@ -141,6 +141,28 @@
     </div>
   </section>
 
+  {% if p.certifications %}
+  <section id="certifications" class="wrap section">
+    <div class="section-head"><h2>Certifications</h2></div>
+    {% for c in p.certifications %}
+    <article class="card cert">
+      <div class="cert-text">
+        {% if c.award %}<span class="award">★ {{ c.award }}</span>{% endif %}
+        <h3>{{ c.title }}</h3>
+        <p class="muted">{{ c.issuer }}{% if c.date %} · {{ c.date }}{% endif %}</p>
+        {% if c.desc %}<p>{{ c.desc }}</p>{% endif %}
+        <div class="links">
+          {% for l in c.links %}<a class="btn small {{ 'primary' if loop.first }}" href="{{ l.url }}" target="_blank" rel="noopener">{{ l.label }} ↗</a>{% endfor %}
+        </div>
+      </div>
+      <div class="cert-images">
+        {% for im in c.images %}<a href="{{ im.href or im.src }}" target="_blank" rel="noopener"><img src="{{ im.src }}" alt="{{ im.alt }}" loading="lazy"></a>{% endfor %}
+      </div>
+    </article>
+    {% endfor %}
+  </section>
+  {% endif %}
+
   <section id="about" class="wrap section">
     <div class="section-head"><h2>About</h2></div>
     <div class="about">
